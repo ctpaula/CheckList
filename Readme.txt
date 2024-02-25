@@ -11,4 +11,4 @@ Para executar a aplicação .NET:
 	INSERT INTO Usuario (Matricula, Nome, Email, SupervisorCheckList) VALUES 
 		(123, 'Cristopher', 'ctpaula1@gmail.com', 0), 
 		(124, 'Supervisor', 'supervisor@empresa.com', 1)
-6) 
+6) Executar o projeto CheckList.API no IIsExpress dentro do Visual Studio.
