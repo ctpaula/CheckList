@@ -3,6 +3,7 @@ using CheckList.Api.Extension;
 using CheckList.Domain;
 using CheckList.Domain.Interfaces.Repositories;
 using CheckList.Domain.Interfaces.Services;
+using CheckList.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,8 +22,12 @@ var configuration = new ConfigurationBuilder()
 builder.Services.AddContext(configuration);
 
 builder.Services.AddTransient<IPerguntaRepository, PerguntaRepository>();
+builder.Services.AddTransient<ICheckListItemRepository, CheckListItemRepository>();
+builder.Services.AddTransient<ICheckListRepository, CheckListRepository>();
+builder.Services.AddTransient<IUsuarioRepository, UsuarioRepository>();
 
 builder.Services.AddTransient<IPerguntaService, PerguntaService>();
+builder.Services.AddTransient<ICheckListService, CheckListService>();
 
 var app = builder.Build();
 

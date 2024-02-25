@@ -23,11 +23,11 @@ namespace Checklist.Infra.Repositories
             {
                 Type entityType = typeof(T);
 
-                PropertyInfo CreatedAtProperty = entityType.GetProperty("CreatedAt");
+                PropertyInfo? CreatedAtProperty = entityType.GetProperty("CreatedAt");
 
                 CreatedAtProperty?.SetValue(entity, DateTime.Now);
 
-                PropertyInfo UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
+                PropertyInfo? UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
 
                 UpdatedAtProperty?.SetValue(entity, DateTime.Now);
 
@@ -54,7 +54,7 @@ namespace Checklist.Infra.Repositories
             {
                 Type entityType = typeof(T);
 
-                PropertyInfo UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
+                PropertyInfo? UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
 
                 UpdatedAtProperty?.SetValue(entity, DateTime.Now);
 
@@ -81,11 +81,11 @@ namespace Checklist.Infra.Repositories
 
                 foreach (var entity in entities)
                 {
-                    PropertyInfo CreatedAtProperty = entityType.GetProperty("CreatedAt");
+                    PropertyInfo? CreatedAtProperty = entityType.GetProperty("CreatedAt");
 
                     CreatedAtProperty?.SetValue(entity, DateTime.Now);
 
-                    PropertyInfo UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
+                    PropertyInfo? UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
 
                     UpdatedAtProperty?.SetValue(entity, DateTime.Now);
                 }
@@ -112,7 +112,7 @@ namespace Checklist.Infra.Repositories
 
                 foreach (var entity in entities)
                 {
-                    PropertyInfo UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
+                    PropertyInfo? UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
 
                     if (UpdatedAtProperty != null)
                     {
@@ -140,9 +140,9 @@ namespace Checklist.Infra.Repositories
             {
                 Type entityType = typeof(T);
 
-                PropertyInfo activeProperty = entityType.GetProperty("Active");
+                PropertyInfo? activeProperty = entityType.GetProperty("Active");
 
-                PropertyInfo UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
+                PropertyInfo? UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
 
                 using var transaction = await _dbContext.Database.BeginTransactionAsync();
                 try
@@ -188,9 +188,9 @@ namespace Checklist.Infra.Repositories
                 {
                     Type entityType = typeof(T);
 
-                    PropertyInfo activeProperty = entityType.GetProperty("Active");
+                    PropertyInfo? activeProperty = entityType.GetProperty("Active");
 
-                    PropertyInfo UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
+                    PropertyInfo? UpdatedAtProperty = entityType.GetProperty("UpdatedAt");
 
                     // DELETE IF NOT EXISTS PROPERTY
 

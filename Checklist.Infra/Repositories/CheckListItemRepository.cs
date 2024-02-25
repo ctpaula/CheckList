@@ -6,8 +6,6 @@ namespace Checklist.Infra.Repositories
 {
     public class CheckListItemRepository : RepositoryBase<CheckListItem>, ICheckListItemRepository
     {
-        protected CheckListItemRepository(RDbContext context) : base(context)
-        {
-        }
+        public CheckListItemRepository(RDbContext context) : base(context) { }
     }
 }

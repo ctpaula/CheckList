@@ -4,6 +4,7 @@ using Checklist.Infra;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Checklist.Infra.Migrations
 {
     [DbContext(typeof(RDbContext))]
-    partial class RDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240225010209_Correcao e ultimos campos")]
+    partial class Correcaoeultimoscampos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +42,7 @@ namespace Checklist.Infra.Migrations
                     b.Property<int>("ExecutorId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SupervisorId")
+                    b.Property<int>("SupervisorId")
                         .HasColumnType("int");
 
                     b.HasKey("CheckListBodyId");
@@ -137,7 +140,9 @@ namespace Checklist.Infra.Migrations
 
                     b.HasOne("CheckList.Domain.Usuario", "Supervisor")
                         .WithMany("CheckListsSupervisor")
-                        .HasForeignKey("SupervisorId");
+                        .HasForeignKey("SupervisorId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Executor");
 

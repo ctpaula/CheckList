@@ -2,16 +2,15 @@
 {
     public class InicioChecklistDTO : PadraoDTO
     {
-        public bool InicioCompletado { get; set; } = false;
+        public bool Completado { get; set; } = false;
         public string? Mensagem { get; set; }
-
         public int CheckListBodyId { get; set; }
         public int ExecutorId { get; set; }
         public DateTime? DataInicioExecucao { get; set; }
 
         public InicioChecklistDTO(CheckListBody checkList) : base()
         {
-            this.InicioCompletado = true;
+            this.Completado = true;
             this.Mensagem = "Proceder com a validação de itens.";
             this.CheckListBodyId = checkList.CheckListBodyId;
             this.ExecutorId = checkList.ExecutorId;

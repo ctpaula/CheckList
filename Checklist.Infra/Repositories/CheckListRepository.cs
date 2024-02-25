@@ -7,9 +7,8 @@ namespace Checklist.Infra.Repositories
 {
     public class CheckListRepository : RepositoryBase<CheckListBody>, ICheckListRepository
     {
-        protected CheckListRepository(RDbContext context) : base(context)
-        {
-        }
+        public CheckListRepository(RDbContext context) : base(context) { }
+
         public async Task<CheckListBody> GetById(int id)
         {
             return await _dbContext.CheckListBody.SingleOrDefaultAsync(x => x.CheckListBodyId == id) ??

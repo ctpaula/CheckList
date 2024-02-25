@@ -18,10 +18,10 @@ namespace CheckList.Domain
 
         public bool SupervisorCheckList { get; set; }
 
-        [ForeignKey("ExecutorId")]
+        [InverseProperty("Executor")]
         public ICollection<CheckListBody>? CheckListsExecutor { get; set; }
 
-        [ForeignKey("SupervisorId")]
+        [InverseProperty("Supervisor")]
         public ICollection<CheckListBody>? CheckListsSupervisor { get; set; }
     }
 }

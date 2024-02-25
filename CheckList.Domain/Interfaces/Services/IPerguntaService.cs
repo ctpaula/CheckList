@@ -2,6 +2,7 @@
 {
     public  interface IPerguntaService
     {
-        Task<Pergunta> SelectById(int id);
+        Task<Pergunta> GetById(int id);
+        Task<List<Pergunta>> GetAll();
     }
 }

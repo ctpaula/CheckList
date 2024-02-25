@@ -1,5 +1,6 @@
 ﻿using CheckList.Domain.Commands;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CheckList.Domain
 {
@@ -9,13 +10,15 @@ namespace CheckList.Domain
 
         [Required(ErrorMessage = "Executor obrigatório.")]
         public int ExecutorId { get; set; }
+        [ForeignKey("ExecutorId")]
         public Usuario? Executor { get; set; }
 
-        public int SupervisorId { get; set; }
+        public int? SupervisorId { get; set; }
+        [ForeignKey("SupervisorId")]
         public Usuario? Supervisor { get; set; }
 
         public DateTime? DataInicioExecucao { get; set; }
-        
+
         public DateTime? DataFimExecucao { get; set; }
 
         public List<CheckListItem>? CheckListItems { get; set; }

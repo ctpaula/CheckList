@@ -19,7 +19,7 @@ namespace CheckList.Api.Controllers
             _service = service;
         }
 
-        [HttpPost(Name = "IniciarChecklist")]
+        [HttpPost("/IniciarChecklist")]
         public async Task<InicioChecklistDTO> IniciarChecklist([FromBody] InicioCheckListCMM command)
         {
             try
@@ -34,7 +34,7 @@ namespace CheckList.Api.Controllers
             }
         }
 
-        [HttpPost(Name = "ExecutarChecklist")]
+        [HttpPost("/ExecutarChecklist")]
         public async Task<ExecucaoCheckListDTO> ExecutarChecklist([FromBody] ExecucaoCheckListCMM command)
         {
             try
@@ -54,7 +54,7 @@ namespace CheckList.Api.Controllers
             }
         }
 
-        [HttpPost(Name = "EncerrarChecklist")]
+        [HttpPost("/EncerrarChecklist")]
         public async Task<EncerramentoCheckListDTO> EncerrarChecklist([FromBody] EncerramentoCheckListCMM command)
         {
             try

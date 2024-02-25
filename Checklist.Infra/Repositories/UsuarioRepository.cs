@@ -7,9 +7,7 @@ namespace Checklist.Infra.Repositories
 {
     public class UsuarioRepository : RepositoryBase<Usuario>, IUsuarioRepository
     {
-        protected UsuarioRepository(RDbContext context) : base(context)
-        {
-        }
+        public UsuarioRepository(RDbContext context) : base(context) { }
 
         public async Task<Usuario> GetById(int id)
         {

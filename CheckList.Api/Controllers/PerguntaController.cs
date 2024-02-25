@@ -1,4 +1,5 @@
 using CheckList.Domain;
+using CheckList.Domain.DTO;
 using CheckList.Domain.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,17 +18,34 @@ namespace CheckList.Api.Controllers
             _service = service;
         }
 
-        [HttpGet(Name = "GetById/{Id}")]
-        public async Task<Pergunta> GetById([FromQuery] int Id)
+        [HttpGet("/GetById/{Id}")]
+        public async Task<PerguntaDTO> GetById([FromQuery] int Id)
         {
             try
             {
-                return await _service.SelectById(Id);
+                return new PerguntaDTO(await _service.GetById(Id));
             }
             catch (Exception ex)
             {
-                _logger.LogError("Erro ao buscar Pergunta", ex.Message, ex.StackTrace);
-                return null;
+                var erro = "Erro de sistema ao pesquisar Peguntas";
+                _logger.LogError(erro, ex.Message, ex.StackTrace);
+                return new PerguntaDTO(true, erro);
+            }
+        }
+
+        [HttpGet("/GetAll")]
+        public async Task<List<PerguntaDTO>> GetAll()
+        {
+            try
+            {
+                var lista = await _service.GetAll();
+                return lista.Select(x => new PerguntaDTO(x)).ToList();
+            }
+            catch (Exception ex)
+            {
+                var erro = "Erro de sistema ao pesquisar Peguntas";
+                _logger.LogError(erro, ex.Message, ex.StackTrace);
+                return new List<PerguntaDTO>();
             }
         }
     }
